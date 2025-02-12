@@ -1,0 +1,17 @@
+spring:
+  config:
+    activate:
+      on-profile: "prod"
+
+
+build:
+  version: "2.1"
+
+accounts:
+  message: "Welcome to EazyBank accounts related production APIs "
+  contactDetails:
+    name: "Akml Ahmed - Developer"
+    email: "akmalahmed@eazybank.com"
+  onCallSupport:
+    - (555) 111-2222
+    - (555) 222-3333
