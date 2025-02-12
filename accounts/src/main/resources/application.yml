@@ -1,0 +1,43 @@
+server:
+  servlet:
+    context-path: /accounts-service
+  port: 8080
+
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: ''
+  h2:
+    console:
+      enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  config:
+    import:
+      - "application_prod.yml"
+      - "application_qa.yml"
+  profiles:
+    active:
+      - "prod"
+
+build:
+  version: "1.0"
+
+
+
+account:
+  message: "Welcome to The Configuration properties Class"
+  contactDetails:
+    name: "Akmal Ahmed Galal"
+    email: "Akmal.Ahmed@gmail.com"
+  onCallSupport:
+    -0125632365
+    -0125632367
+
+

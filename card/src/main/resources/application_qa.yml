@@ -1,0 +1,18 @@
+spring:
+  config:
+    activate:
+      on-profile: "qa"
+
+
+
+build:
+  version: "3.1"
+
+accounts:
+  message: "Welcome to EazyBank accounts related Quality Assurance APIs "
+  contactDetails:
+    name: "Amal mansour - Developer"
+    email: "aml.mansour@eazybank.com"
+  onCallSupport:
+    - (555) 110-2222
+    - (555) 220-3333
