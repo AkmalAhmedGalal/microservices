@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 @Component
-@ConfigurationProperties(prefix = "account")
+@ConfigurationProperties(prefix = "accounts")
 @Data
 public class CardEnvironmentValues {
 

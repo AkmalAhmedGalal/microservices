@@ -1,6 +1,7 @@
 package com.project.card.controller;
 
 import com.project.card.constants.CardsConstants;
+import com.project.card.dto.CardEnvironmentValues;
 import com.project.card.dto.CardsDto;
 import com.project.card.dto.ErrorResponseDto;
 import com.project.card.dto.ResponseDto;
@@ -13,7 +14,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -40,6 +40,8 @@ public class CardsController {
 
     @Value("${build.version}")
     private String buildVersion;
+
+    private final CardEnvironmentValues cardEnvironmentValues;
 
     @Operation(
             summary = "Create Card REST API",
@@ -173,4 +175,9 @@ public class CardsController {
         return buildVersion;
     }
 
+
+    @GetMapping("/get-configuration-properties")
+    public CardEnvironmentValues getConfigurationProperties() {
+        return cardEnvironmentValues;
+    }
 }
