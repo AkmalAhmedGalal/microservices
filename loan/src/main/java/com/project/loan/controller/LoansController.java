@@ -3,6 +3,7 @@ package com.project.loan.controller;
 
 import com.project.loan.constants.LoansConstants;
 import com.project.loan.dto.ErrorResponseDto;
+import com.project.loan.dto.LoanEnvironmentValues;
 import com.project.loan.dto.LoansDto;
 import com.project.loan.dto.ResponseDto;
 import com.project.loan.service.framework.ILoansService;
@@ -37,7 +38,8 @@ import org.springframework.web.bind.annotation.*;
 @Validated
 public class LoansController {
 
-    private ILoansService iLoansService;
+    private final ILoansService iLoansService;
+    private final LoanEnvironmentValues loansEnvironmentValues;
 
     @Value("${build.version}")
     private String buildVersion;
@@ -169,9 +171,36 @@ public class LoansController {
         }
     }
 
+    @Operation(
+            summary = "Get The Build Version for the REST API",
+            description = "This is an APi To retrieve the build version number"
+    )
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "HTTP Status OK"
+            ),
+            @ApiResponse(
+                    responseCode = "417",
+                    description = "Expectation Failed"
+            ),
+            @ApiResponse(
+                    responseCode = "500",
+                    description = "HTTP Status Internal Server Error",
+                    content = @Content(
+                            schema = @Schema(implementation = ErrorResponseDto.class)
+                    )
+            )
+    }
+    )
     @GetMapping("/get-version")
     public ResponseEntity<String> getApplicationVersion(){
         return  ResponseEntity.status(HttpStatus.OK).body(buildVersion);
+    }
+
+    @GetMapping("/get-configuration-properties")
+    public LoanEnvironmentValues getConfigurationProperties() {
+        return loansEnvironmentValues;
     }
 
 }

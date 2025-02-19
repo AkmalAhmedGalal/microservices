@@ -1,4 +1,4 @@
-package com.project.accounts.dto;
+package com.project.loan.dto;
 
 
 import lombok.Data;
@@ -11,10 +11,9 @@ import java.util.Map;
 @Component
 @ConfigurationProperties(prefix = "accounts")
 @Data
-public class AccountEnvironmentValues {
+public class LoanEnvironmentValues {
 
     private String message;
     private List<String> onCallSupport;
-
     private Map<String,String> contactDetails;
 }
