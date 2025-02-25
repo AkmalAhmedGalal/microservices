@@ -32,7 +32,7 @@ public class AccountsServiceImpl implements IAccountsService {
         if (existingCustomer.isPresent()) {
             throw new RuntimeException("Customer with mobile number " + customer.getMobileNumber() + " already exists");
         }
-        customer.setCustomerId(Math.abs(new Random().nextLong()));
+//        customer.setCustomerId(Math.abs(new Random().nextLong()));
         Customer savedCustomer = customerRepository.save(customer);
         accountRepository.save(createNewAccount(savedCustomer));
 
